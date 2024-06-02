@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "firstName": "John",
+        "lastName": "Doe",
+        "nickname": "@jdoe",
+        "avatar": "https://assets-global.website-files.com/6365d860c7b7a7191055eb8a/65a753ab71af2c038f8993a5_Zahir%20Mays-p-500.png"
+    },
+    {
+        "id": 2,
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "nickname": "@jadoe",
+        "avatar": "https://assets-global.website-files.com/6365d860c7b7a7191055eb8a/65a75128a4117992e1b9481a_Kate%20Morrison-p-500.jpg"
+    },
+    {
+        "id": 3,
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "nickname": "@asmith",
+        "avatar": "https://assets-global.website-files.com/6365d860c7b7a7191055eb8a/65a751b29f14e2d659a0eadd_Lori%20Bryson-p-500.png"
+    },
+    {
+        "id": 4,
+        "firstName": "Bob",
+        "lastName": "Smith",
+        "nickname": "@bsmith",
+        "avatar": "https://assets-global.website-files.com/6365d860c7b7a7191055eb8a/65a752835ffff0b3b00139ad_Noah%20Pierre-p-500.png"
+    },
+    {
+        "id": 5,
+        "firstName": "Charlie",
+        "lastName": "Brown",
+        "nickname": "@cbrown",
+        "avatar": "https://assets-global.website-files.com/6365d860c7b7a7191055eb8a/65a74f54c969907ead9ea7b5_Eduard%20Franz-p-500.png"
+    }
+
+]

@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { UserAvatar } from "./user-avatar";
 
 interface TweetsItemProps {
   tweet: Tweet;
@@ -18,13 +19,7 @@ export function TweetsItem({ tweet }: TweetsItemProps) {
       role="button"
     >
       <div className="flex flex-col items-center">
-        <Image
-          src={tweet.user.avatar}
-          alt="avatar"
-          width={40}
-          height={40}
-          className="rounded-full"
-        />
+        <UserAvatar avatar={tweet.user.avatar} />
       </div>
       <div className="flex flex-col gap-3 flex-grow">
         <div className="flex items-center gap-1">
