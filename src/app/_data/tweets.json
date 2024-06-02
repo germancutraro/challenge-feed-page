@@ -1,0 +1,45 @@
+[
+    {
+     "id": 1,
+      "user": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "nickname": "@jdoe",
+        "avatar": "https://ui-avatars.com/api/?name=Valen+Salerno"
+      },
+      "createdAt": "2024-05-01T08:30:00Z",
+      "content": "Just had the best coffee ever!",
+      "likes": 150,
+      "retweets": 20,
+      "comments": 10
+    },
+    {
+     "id": 2,
+      "user": {
+        "firstName": "Jane",
+        "lastName": "Smith",
+        "nickname": "@jsmith",
+        "avatar": "https://ui-avatars.com/api/?name=Jane+Smith"
+      },
+      "createdAt": "2024-05-01T09:00:00Z",
+      "content": "Can't believe it's already May!",
+      "likes": 200,
+      "retweets": 30,
+      "comments": 15
+    },
+    {
+      "id": 3,  
+      "user": {
+        "firstName": "Michael",
+        "lastName": "Johnson",
+        "nickname": "@mjohnson",
+        "avatar": "https://ui-avatars.com/api/?name=Michael+Johnson"
+      },
+      "createdAt": "2024-05-01T10:00:00Z",
+      "content": "Excited for the weekend!",
+      "likes": 300,
+      "retweets": 40,
+      "comments": 20
+    }
+  ]
+  
