@@ -7,16 +7,22 @@ import { UserAvatar } from "./user-avatar";
 
 interface TweetsItemProps {
   tweet: Tweet;
+  shouldRedirect: boolean;
+  showTopDate: boolean;
 }
 
-export function TweetsItem({ tweet }: TweetsItemProps) {
+export function TweetsItem({
+  tweet,
+  shouldRedirect,
+  showTopDate,
+}: TweetsItemProps) {
   const { push } = useRouter();
 
   return (
     <div
-      className="bg-white py-5 px-4 border-2 flex gap-4 text-slate-500"
-      onClick={() => push(`/tweet/${tweet.id}`)}
-      role="button"
+      className="bg-white py-5 px-4 border rounded-md flex gap-4 text-slate-500"
+      onClick={() => (shouldRedirect ? push(`/tweet/${tweet.id}`) : null)}
+      role={shouldRedirect ? "button" : "article"}
     >
       <div className="flex flex-col items-center">
         <UserAvatar avatar={tweet.user.avatar} />
@@ -26,12 +32,20 @@ export function TweetsItem({ tweet }: TweetsItemProps) {
           <p className="font-bold text-black">{tweet.user.firstName}</p>
           <p className="font-bold text-black">{tweet.user.lastName}</p>
           <p>{tweet.user.nickname} · </p>
-          <p>{format(new Date(tweet.createdAt), "MMM dd")}</p>
+          {showTopDate ? (
+            <p>{format(new Date(tweet.createdAt), "MMM dd")}</p>
+          ) : null}
+
           <p className="ml-auto "> ··· </p>
         </div>
         <div className="text-black">
           <p>{tweet.content}</p>
         </div>
+        {!showTopDate ? (
+          <span className="text-sm">
+            {format(tweet.createdAt, "h:mm a, MMM dd, yyyy")}
+          </span>
+        ) : null}
         <div className="flex gap-4">
           <div className="flex gap-1">
             <svg
@@ -51,7 +65,7 @@ export function TweetsItem({ tweet }: TweetsItemProps) {
                 d="M9 17h6l3 3v-3h2V9h-2M4 4h11v8H9l-3 3v-3H4V4Z"
               />
             </svg>
-            {tweet.comments}
+            {tweet.comments?.length || 0}
           </div>
           <div className="flex gap-1">
             <svg
@@ -71,7 +85,6 @@ export function TweetsItem({ tweet }: TweetsItemProps) {
                 d="m16 10 3-3m0 0-3-3m3 3H5v3m3 4-3 3m0 0 3 3m-3-3h14v-3"
               />
             </svg>
-
             {tweet.retweets}
           </div>
           <div className="flex gap-1">
