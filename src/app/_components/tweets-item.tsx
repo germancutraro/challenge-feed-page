@@ -1,9 +1,9 @@
 "use client";
 
 import { format } from "date-fns";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { UserAvatar } from "./user-avatar";
+import { useState } from "react";
 
 interface TweetsItemProps {
   tweet: Tweet;
@@ -12,11 +12,22 @@ interface TweetsItemProps {
 }
 
 export function TweetsItem({
-  tweet,
+  tweet: data,
   shouldRedirect,
   showTopDate,
 }: TweetsItemProps) {
   const { push } = useRouter();
+  const [tweet, setTweet] = useState(data);
+  const [actions, setActions] = useState({ like: false, retweet: false });
+
+  const handleAction = (type: "like" | "retweet") => {
+    const key = type === "like" ? "likes" : "retweets";
+    setTweet((prev) => ({
+      ...prev,
+      [key]: actions[type] ? prev[key] - 1 : prev[key] + 1,
+    }));
+    setActions((prev) => ({ ...prev, [type]: !prev[type] }));
+  };
 
   return (
     <div
@@ -67,7 +78,11 @@ export function TweetsItem({
             </svg>
             {tweet.comments?.length || 0}
           </div>
-          <div className="flex gap-1">
+          <div
+            className="flex gap-1"
+            onClick={() => handleAction("retweet")}
+            role="button"
+          >
             <svg
               className="w-6 h-6 text-gray-800 dark:text-slate-500"
               aria-hidden="true"
@@ -78,7 +93,8 @@ export function TweetsItem({
               viewBox="0 0 24 24"
             >
               <path
-                stroke="currentColor"
+                fill={actions.retweet ? "#00a552" : "none"}
+                stroke={actions.retweet ? "#00a552" : "currentColor"}
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
@@ -87,9 +103,13 @@ export function TweetsItem({
             </svg>
             {tweet.retweets}
           </div>
-          <div className="flex gap-1">
+          <div
+            className="flex gap-1"
+            onClick={() => handleAction("like")}
+            role="button"
+          >
             <svg
-              className="w-6 h-6 text-gray-800 dark:text-slate-500"
+              className="w-6 h-6 text-slate-500"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -98,14 +118,15 @@ export function TweetsItem({
               viewBox="0 0 24 24"
             >
               <path
-                stroke="currentColor"
+                fill={actions.like ? "red" : "none"}
+                stroke={actions.like ? "red" : "currentColor"}
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
               />
             </svg>
-            {tweet.likes}
+            <span>{tweet.likes}</span>
           </div>
         </div>
       </div>

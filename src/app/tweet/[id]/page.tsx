@@ -17,7 +17,7 @@ export default function TweetPage({ params }: TweetPageProps) {
 
   return (
     <div>
-      <TweetsItem tweet={tweet} shouldRedirect={false} />
+      <TweetsItem tweet={tweet} shouldRedirect={false} showTopDate={false} />
       <TweetsComments comments={tweet.comments} />
     </div>
   );
