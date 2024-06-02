@@ -1,13 +1,22 @@
+"use client";
+
 import { format } from "date-fns";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface TweetsItemProps {
   tweet: Tweet;
 }
 
 export function TweetsItem({ tweet }: TweetsItemProps) {
+  const { push } = useRouter();
+
   return (
-    <div className="bg-white py-5 px-4 border-2 flex gap-4 text-slate-500">
+    <div
+      className="bg-white py-5 px-4 border-2 flex gap-4 text-slate-500"
+      onClick={() => push(`/tweet/${tweet.id}`)}
+      role="button"
+    >
       <div className="flex flex-col items-center">
         <Image
           src={tweet.user.avatar}
