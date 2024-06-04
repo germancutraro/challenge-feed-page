@@ -27,7 +27,7 @@ export function TweetsItem({
       setTimeout(() => {
         // Simulate a 20% chance of request failure
         Math.random() < 0.2
-          ? reject(new Error(`Failed to ${type}`))
+          ? reject(new Error("Internal Server Error"))
           : resolve(`Success: ${type}`);
       }, 500);
     });
